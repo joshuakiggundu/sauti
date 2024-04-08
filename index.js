@@ -15,12 +15,35 @@ const path = require("path"); // Import the path module
 
 const app = express();
 
+// app.set('view engine', 'ejs')
+// app.set('views', path.join(__dirname, '/public'))
+
 // Serve static files from the "public" directory
-app.use( '/', express.static(path.join(__dirname, 'public')));
+ app.use( '/', express.static(path.join(__dirname, 'public')));
 
 // Define a route to serve each HTML page individually
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "home-1.html"));
+ app.get('/', (req, res) => {
+     res.sendFile(path.join(__dirname, "public", "home-1.html"));
+ });
+
+// app.get('/', (req, res) => {
+//     res.render('home.ejs')
+// })
+
+app.get('/home2', (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "home-2.html"));
+});
+
+app.get('/home3', (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "home-3.html"));
+});
+
+app.get('/home4', (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "home-4.html"));
+});
+
+app.get('/home5', (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "home-5.html"));
 });
 
 app.get('/services', (req, res) => {
@@ -61,6 +84,22 @@ app.get('/team', (req, res) => {
 
 app.get('/blog', (req, res) => {
     res.sendFile(path.join(__dirname, "public", "blog.html"));
+});
+
+app.get('/publication1', (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "publication-1.html"));
+});
+
+app.get('/publication2', (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "publication-2.html"));
+});
+
+app.get('/publication3', (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "publication-3.html"));
+});
+
+app.get('/publication4', (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "publication-4.html"));
 });
 
 app.get('/home-2', (req, res) => {
