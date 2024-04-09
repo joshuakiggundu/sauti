@@ -71,7 +71,23 @@ app.get('/portfolio', (req, res) => {
 });
 
 app.get('/project', (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "project-1.html"));
+    res.sendFile(path.join(__dirname, "public", "project-2.html"));
+});
+
+app.get('/project3', (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "project-3.html"));
+});
+
+app.get('/project4', (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "project-4.html"));
+});
+
+app.get('/project5', (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "project-5.html"));
+});
+
+app.get('/project6', (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "project-6.html"));
 });
 
 app.get('/contact', (req, res) => {
