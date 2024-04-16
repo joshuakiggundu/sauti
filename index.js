@@ -12,11 +12,16 @@
 
 const express = require("express");
 const path = require("path"); // Import the path module
+const bodyParser = require('body-parser')
+const emailjs = require('emailjs-com')
 
 const app = express();
 
 // app.set('view engine', 'ejs')
 // app.set('views', path.join(__dirname, '/public'))
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // Serve static files from the "public" directory
  app.use( '/', express.static(path.join(__dirname, 'public')));
@@ -122,6 +127,34 @@ app.get('/home-2', (req, res) => {
     res.sendFile(path.join(__dirname, "public", "home-2.html"));
 });
 // Add similar routes for other HTML pages as needed
+
+app.post('/send-email', (req, res) => {
+    const { user_email, user_message } = req.body;
+
+    if (!user_email || !user_message) {
+        res.status(400).send('Both email and message are required.');
+        return;
+    }
+
+    const emailParams = {
+        service_id: 'service_qpk03se',
+        template_id: 'template_9nekcsh',
+        user_id: 'r99WkUK02R3vCeCrT',
+        template_params: {
+            'email-input': email_input,
+            'message-input': message_input
+        }
+    };
+
+    emailjs.send('default_service', 'template_9nekcsh', emailParams.template_params)
+        .then(function(response) {
+            console.log('Email sent:', response);
+            res.send('Your message has been sent successfully!');
+        }, function(error) {
+            console.error('Failed to send email:', error);
+            res.status(500).send('Failed to send email.');
+        });
+});
 
 // Start the server
 app.listen(3000, () => {
