@@ -17,8 +17,8 @@ const emailjs = require('emailjs-com')
 
 const app = express();
 
-// app.set('view engine', 'ejs')
-// app.set('views', path.join(__dirname, '/public'))
+ app.set('view engine', 'ejs')
+ app.set('views', path.join(__dirname, '/views'))
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -28,28 +28,13 @@ app.use(bodyParser.json());
 
 // Define a route to serve each HTML page individually
  app.get('/', (req, res) => {
-     res.sendFile(path.join(__dirname, "public", "home-1.html"));
+     res.sendFile(path.join(__dirname, "public", "index.html"));
  });
 
 // app.get('/', (req, res) => {
 //     res.render('home.ejs')
 // })
 
-app.get('/home2', (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "home-2.html"));
-});
-
-app.get('/home3', (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "home-3.html"));
-});
-
-app.get('/home4', (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "home-4.html"));
-});
-
-app.get('/home5', (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "home-5.html"));
-});
 
 app.get('/services', (req, res) => {
     res.sendFile(path.join(__dirname, "public", "services.html"));
@@ -97,6 +82,10 @@ app.get('/project6', (req, res) => {
 
 app.get('/contact', (req, res) => {
     res.sendFile(path.join(__dirname, "public", "contact.html"));
+});
+
+app.get('/privacy', (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "privacy.html"));
 });
 
 app.get('/team', (req, res) => {
